@@ -1,14 +1,15 @@
 from snek import Snek
 from grid import Grid
+from scene import Scene
 from settings import Settings as S
 
 from random import randint
 import pygame
 
-class GameScene:
+class GameScene(Scene):
 
     def __init__(self,director):
-        self.director = director
+        super().__init__(director)
 
         #PLAYER INFO
         self.p1 = Snek((5,0),S.p1Char)
@@ -60,6 +61,9 @@ class GameScene:
             val = (0,-1)
         elif event.key == pygame.K_DOWN:
             val = (0,1)
+        elif event.key == 27:
+            self.director.change_scene('menu')
+            return
         self.p1.changeDirection(val)
 
     def drawSquare(self,colour,coords):
