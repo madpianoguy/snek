@@ -3,7 +3,7 @@ import pygame
 
 class Button:
 
-    def __init__(self,coords,size,screen):
+    def __init__(self,coords,size,screen,colour=(255,0,0)):
         self.xPos = coords[0]
         self.yPos = coords[1]
         self.xSize = size[0]
@@ -11,17 +11,16 @@ class Button:
         self.screen = screen
         self.button = None
         self.rect = None
-        self.colour = None
+        self.colour = colour
         self.font = None
-        self.text = None
+        self.text = ''
         self.textSurface = None
         self.fontType = None
         self.fontSize = None
         self.fontColour = None
         self.isText = False
 
-    def draw(self,colour):
-        self.colour = colour
+    def draw(self,args=None):
         
         self.button = pygame.Rect(self.xPos,
                                 self.yPos,
@@ -37,6 +36,7 @@ class Button:
             
 
     def addText(self,text,fontType,fontSize,fontColour):
+        self.text = text
         self.fontType = fontType
         self.fontSize = fontSize
         self.fontColour = fontColour

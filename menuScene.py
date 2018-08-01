@@ -1,4 +1,5 @@
 from scene import Scene
+from buttonManager import ButtonManager
 from settings import Settings as S
 
 
@@ -20,6 +21,8 @@ class MenuScene(Scene):
 
         self.buttonSize = (300,100)
         self.buttonMiddle = None
+
+        self.buttonManager = None
         
 
         self.background = pygame.image.load('media/menu.JPG')
@@ -29,19 +32,18 @@ class MenuScene(Scene):
         self.textSurface = self.font.render('Snek',True,(0,0,0))
         self.textWidth, self.textHeight = self.font.size('Snek')
 
-        
-        buttonMiddle = self.calculateMiddle(self.buttonSize)
-        buttonWidth, buttonHeight = (buttonMiddle[0],buttonMiddle[1]+200)
-        self.buttonMiddle = (buttonWidth,buttonHeight)
-        self.button = Button(self.buttonMiddle,
-                             self.buttonSize,
-                             self.director.screen)
-        self.button.addText('Play',S.font,60,S.black)
+        self.buttonManager = ButtonManager(self.director,(0,500),height=100)
+
+        print('First button')
+        self.buttonManager.addButton(S.cyan,'Play - No Rules')
+        print('Second button')
+        self.buttonManager.addButton(S.cyan,'Play - Standard Rules')
 
     def on_update(self):
         pass
 
     def on_event(self,event):
+        return
         if (event.type == pygame.MOUSEBUTTONDOWN and
             self.button.collidepoint(event.pos)):
             self.director.change_scene('standardGame')
@@ -57,7 +59,7 @@ class MenuScene(Scene):
                                                       self.textHeight)))
 
         #Button
-        self.button.draw(S.red)
+        self.buttonManager.draw()
 
     def calculateMiddle(self,widthAndHeight):
         return super().calculateMiddle(widthAndHeight,
