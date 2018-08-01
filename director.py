@@ -17,6 +17,9 @@ class Director:
         self.scenes = {}
         self.scene = None
 
+        pygame.mixer.music.load('media/brownEyedGirl.mp3')
+        pygame.mixer.music.play()
+
     def quit(self):
         self.quitFlag = True
 
@@ -41,6 +44,7 @@ class Director:
 
     def change_scene(self,sceneKey):
         self.scene = self.scenes[sceneKey]
+        self.scene.on_startup()
 
     def add_scene(self,scene,key):
         self.scenes[key] = scene

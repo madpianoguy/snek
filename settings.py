@@ -21,3 +21,5 @@ class Settings:
     foodColour = green
 
     numOfFood = 3
+
+    font = 'Comic Sans MS'

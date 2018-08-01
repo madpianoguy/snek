@@ -18,3 +18,6 @@ class Scene:
         wLoc = int(screenDimensions[0]/2 - widthAndHeight[0]/2)
         hLoc = int(screenDimensions[1]/2 - widthAndHeight[1]/2)
         return (wLoc,hLoc)
+
+    def on_startup(self):
+        pass
