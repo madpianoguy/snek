@@ -44,7 +44,7 @@ class MenuScene(Scene):
     def on_event(self,event):
         if (event.type == pygame.MOUSEBUTTONDOWN and
             self.button.collidepoint(event.pos)):
-            self.director.change_scene('game')
+            self.director.change_scene('standardGame')
 
     def on_draw(self):
         self.director.screen.fill(S.white)

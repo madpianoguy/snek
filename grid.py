@@ -10,8 +10,8 @@ class Grid:
                      for x in range(0,dHeight,size)]
 
     def getValue(self,xVal,yVal):
-        if xVal > 0 and xVal < self.cols:
-            if yVal > 0 and yVal < self.rows:
+        if xVal >= 0 and xVal < self.cols:
+            if yVal >= 0 and yVal < self.rows:
                 return self.grid[yVal][xVal]
         return None
 

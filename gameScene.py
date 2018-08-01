@@ -11,9 +11,7 @@ class GameScene(Scene):
     def __init__(self,director):
         super().__init__(director)
 
-        #PLAYER INFO
-        self.p1 = Snek((5,0),S.p1Char)
-        self.players = [self.p1]
+        
 
         #GRID INFO
         self.empty = S.empty
@@ -22,6 +20,10 @@ class GameScene(Scene):
                          self.director.dHeight,
                          self.size,
                          self.empty)
+
+        #PLAYER INFO
+        self.p1 = Snek((int(self.grid.cols/2),int(self.grid.rows/2)),S.p1Char)
+        self.players = [self.p1]
 
         #OTHER INFO
         self.food = []
@@ -36,6 +38,7 @@ class GameScene(Scene):
             self.handleKey(event)
 
     def on_draw(self):
+        self.director.screen.fill(S.black)
         self.draw()
 
     def updateFood(self):
@@ -66,8 +69,10 @@ class GameScene(Scene):
             return
         self.p1.changeDirection(val)
 
-    def drawSquare(self,colour,coords):
-        pygame.draw.rect(self.director.screen,colour,coords,3)
+    def drawSquare(self,colour,coords,fill=3):
+        if len(coords) == 2:
+            coords = (coords[0],coords[1],self.size,self.size)
+        pygame.draw.rect(self.director.screen,colour,coords,fill)
 
     def move(self):
         self.p1.update()
@@ -82,7 +87,6 @@ class GameScene(Scene):
             self.grid.setValue(coord[0],coord[1],S.food)
 
     def draw(self):
-        self.director.screen.fill(S.black)
         for coord in self.p1.getCoords():
             self.drawSquare(S.p1Colour,self.grid.getCoords(coord[0],coord[1]))
         for coord in self.food:
