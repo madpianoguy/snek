@@ -40,6 +40,9 @@ class MenuScene(Scene):
         self.buttonManager.addButton(S.cyan,'Play - Standard Rules',
                                      bind=self.playRules)
 
+        self.buttonManager.addButton(S.cyan,'Reset Games',
+                                     bind=self.resetGames)
+
     def on_update(self):
         pass
 
@@ -64,6 +67,10 @@ class MenuScene(Scene):
 
     def playRules(self):
         self.director.change_scene('standardGame')
+
+    def resetGames(self):
+        self.director.reset_scene('game')
+        self.director.reset_scene('standardGame')
 
     def calculateMiddle(self,widthAndHeight):
         return super().calculateMiddle(widthAndHeight,

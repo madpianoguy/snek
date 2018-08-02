@@ -29,7 +29,7 @@ class ButtonManager:
         else:
             self.height = height
 
-        print('Button manager:',self.width,self.height)
+        #print('Button manager:',self.width,self.height)
 
         self.numOfButtons = 0
         self.buttons = []

@@ -29,6 +29,9 @@ class StandardGameScene(GameScene):
             if self.checkIfCrashed():
                 self.stop()
 
+    def on_reset(self):
+        self.__init__(self.director)
+
     def stop(self):
         self.stopped = True
         for player in self.players:

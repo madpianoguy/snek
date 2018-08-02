@@ -49,5 +49,8 @@ class Director:
     def add_scene(self,scene,key):
         self.scenes[key] = scene
 
+    def reset_scene(self,scene_key):
+        self.scenes[scene_key].on_reset()
+
 
         

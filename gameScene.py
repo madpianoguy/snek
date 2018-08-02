@@ -41,6 +41,9 @@ class GameScene(Scene):
         self.director.screen.fill(S.black)
         self.draw()
 
+    def on_reset(self):
+        self.__init__(self.director)
+
     def updateFood(self):
         while len(self.food) < S.numOfFood:
             cols,rows = self.grid.getSize()
