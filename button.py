@@ -12,6 +12,8 @@ class Button:
         self.button = None
         self.rect = None
         self.colour = colour
+        self.hoverColour = self.getHoverColour()
+        self.currentColour = colour
         self.font = None
         self.text = ''
         self.textSurface = None
@@ -19,6 +21,32 @@ class Button:
         self.fontSize = None
         self.fontColour = None
         self.isText = False
+        self.method = None
+
+    def getHoverColour(self):
+        new = []
+        for val in self.colour:
+            val -= 20
+            if val < 0:
+                val = 0
+            new.append(val)
+        return (new[0],new[1],new[2])
+            
+
+    def do_hover(self):
+        if self.collidepoint(pygame.mouse.get_pos()):
+            self.currentColour = self.hoverColour
+        else:
+            self.currentColour = self.colour
+
+    def do_click(self,event):
+        if (self.method is not None and
+            event.type == pygame.MOUSEBUTTONDOWN and
+            self.collidepoint(event.pos)):
+            self.method()
+
+    def isBound(self):
+        return (self.method is not None)
 
     def draw(self,args=None):
         
@@ -28,7 +56,7 @@ class Button:
                                 self.ySize)
         
         self.rect = pygame.draw.rect(self.screen,
-                                     self.colour,
+                                     self.currentColour,
                                      self.button)
 
         if self.isText:
@@ -45,6 +73,13 @@ class Button:
         width,height = self.font.size(text)
         self.textPos = self.calculateFontPos(width,height)
         self.isText = True
+
+    def bind(self,method):
+        self.method = method
+
+    def on_event(self,event):
+        self.do_hover()
+        self.do_click(event)
 
     def calculateFontPos(self,width,height):
         #x = (width-self.xSize) / 2 + self.xPos

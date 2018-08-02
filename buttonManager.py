@@ -34,7 +34,9 @@ class ButtonManager:
         self.numOfButtons = 0
         self.buttons = []
 
-
+    def on_event(self,event):
+        for button in self.buttons:
+            button.on_event(event)
 
     def draw(self):
         for button in self.buttons:
@@ -42,24 +44,27 @@ class ButtonManager:
         
 
     def addButton(self,colour,text=False,fontColour=(0,0,0),
-                  fontType='Comic Sans MS',fontSize=30):
+                  fontType='Comic Sans MS',fontSize=30,bind=False):
         self.numOfButtons = len(self.buttons)
         oldButtons = self.buttons
         self.buttons = []
         for button in oldButtons:
-            print('Adding buttons')
             size,coords = self.getNextSizeCoords()
             newButton = Button(coords,size,self.screen,button.colour)
             if button.isText:
                 newButton.addText(button.text,button.fontType,button.fontSize,
                               button.fontColour)
+            if button.isBound():
+                newButton.bind(button.method)
             self.buttons.append(newButton)
 
         size,coords = self.getNextSizeCoords()
-        print('Button:',text,'size:',size,'coords:',coords)
+        #print('Button:',text,'size:',size,'coords:',coords)
         newButton = Button(coords,size,self.screen,colour)
         if text != False:
             newButton.addText(text,fontType,fontSize,fontColour)
+        if bind is not None:
+            newButton.bind(bind)
         self.buttons.append(newButton)
         
         self.numOfButtons += 1

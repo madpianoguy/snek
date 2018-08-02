@@ -34,19 +34,17 @@ class MenuScene(Scene):
 
         self.buttonManager = ButtonManager(self.director,(0,500),height=100)
 
-        print('First button')
-        self.buttonManager.addButton(S.cyan,'Play - No Rules')
-        print('Second button')
-        self.buttonManager.addButton(S.cyan,'Play - Standard Rules')
+        self.buttonManager.addButton(S.cyan,'Play - No Rules',
+                                     bind=self.playNoRules)
+
+        self.buttonManager.addButton(S.cyan,'Play - Standard Rules',
+                                     bind=self.playRules)
 
     def on_update(self):
         pass
 
     def on_event(self,event):
-        return
-        if (event.type == pygame.MOUSEBUTTONDOWN and
-            self.button.collidepoint(event.pos)):
-            self.director.change_scene('standardGame')
+        self.buttonManager.on_event(event)
 
     def on_draw(self):
         self.director.screen.fill(S.white)
@@ -60,6 +58,12 @@ class MenuScene(Scene):
 
         #Button
         self.buttonManager.draw()
+
+    def playNoRules(self):
+        self.director.change_scene('game')
+
+    def playRules(self):
+        self.director.change_scene('standardGame')
 
     def calculateMiddle(self,widthAndHeight):
         return super().calculateMiddle(widthAndHeight,
