@@ -8,7 +8,7 @@ import pygame
 
 class GameScene(Scene):
 
-    def __init__(self,director):
+    def __init__(self,director,sneks=[Snek(char=S.p1Char)]):
         super().__init__(director)
 
         
@@ -22,18 +22,29 @@ class GameScene(Scene):
                          self.empty)
 
         #PLAYER INFO
-        self.p1 = Snek((int(self.grid.cols/2),int(self.grid.rows/2)),S.p1Char)
-        self.players = [self.p1]
+        self.sneks = sneks
+        self.setStartingPositions()
 
         #OTHER INFO
         self.food = []
         self.updateFood()
+
+    def setStartingPositions(self):
+        xPos = int(self.grid.rows/3)
+        for i,snek in enumerate(self.sneks):
+            yPos = int(self.grid.rows/(len(self.sneks)+1))* (i+1)
+            snek.setStartCoords((xPos,yPos))
+
+    def setSneks(self,sneks):
+        self.sneks = sneks
+        self.setStartingPositions()
 
     def on_update(self):
         self.move()
         self.eatFood()
 
     def on_event(self,event):
+        self.isEscape(event)
         if event.type == pygame.KEYDOWN:
             self.handleKey(event)
 
@@ -44,6 +55,11 @@ class GameScene(Scene):
     def on_reset(self):
         self.__init__(self.director)
 
+    def isEscape(self,event):
+        if (event.type == pygame.KEYDOWN and
+            event.key == 27):
+            self.director.change_scene('menu')
+
     def updateFood(self):
         while len(self.food) < S.numOfFood:
             cols,rows = self.grid.getSize()
@@ -52,25 +68,15 @@ class GameScene(Scene):
             #print(self.food)
 
     def eatFood(self):
-        if self.p1.head in self.food:
-            self.p1.eaten = True
-            self.food.remove(self.p1.head)
-            self.updateFood()
+        for snek in self.sneks:
+            if snek.head in self.food:
+                snek.eaten = True
+                self.food.remove(snek.head)
+                self.updateFood()
 
     def handleKey(self,event):
-        val = (0,0)
-        if event.key == pygame.K_LEFT:
-            val = (-1,0)
-        elif event.key == pygame.K_RIGHT:
-            val = (1,0)
-        elif event.key == pygame.K_UP:
-            val = (0,-1)
-        elif event.key == pygame.K_DOWN:
-            val = (0,1)
-        elif event.key == 27:
-            self.director.change_scene('menu')
-            return
-        self.p1.changeDirection(val)
+        for snek in self.sneks:
+            snek.on_event(event)
 
     def drawSquare(self,colour,coords,fill=3):
         if len(coords) == 2:
@@ -78,19 +84,22 @@ class GameScene(Scene):
         pygame.draw.rect(self.director.screen,colour,coords,fill)
 
     def move(self):
-        self.p1.update()
-        for coord in self.p1.body:
-            self.grid.setValue(coord[0],coord[1],self.p1.char)
-            
-        if not self.p1.eaten:
-            old = self.p1.old
-            self.grid.setValue(old[0],old[1],S.empty)
+        for snek in self.sneks:
+            snek.update()
+            for coord in snek.body:
+                self.grid.setValue(coord[0],coord[1],snek.char)
+                
+            if not snek.eaten:
+                old = snek.old
+                self.grid.setValue(old[0],old[1],S.empty)
             
         for coord in self.food:
             self.grid.setValue(coord[0],coord[1],S.food)
 
     def draw(self):
-        for coord in self.p1.getCoords():
-            self.drawSquare(S.p1Colour,self.grid.getCoords(coord[0],coord[1]))
+        for snek in self.sneks:
+            for coord in snek.getCoords():
+                self.drawSquare(snek.colour,
+                                self.grid.getCoords(coord[0],coord[1]))
         for coord in self.food:
             self.drawSquare(S.foodColour,self.grid.getCoords(coord[0],coord[1]))

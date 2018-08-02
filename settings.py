@@ -1,4 +1,4 @@
-
+from player import Player
 
 class Settings:
 
@@ -20,11 +20,21 @@ class Settings:
     maroon = (128,0,0)
 
     p1Char = 'p1'
+    p1Colour = red
+
+    p2Char = 'p2'
+    p2Colour = white
+
+    p3Char = 'p3'
+    p3Colour = yellow
+
+    players = [Player(p1Char,p1Colour),
+               Player(p2Char,p2Colour),
+               Player(p3Char,p3Colour)]
     empty = 'e'
     food = 'f'
     wallChar = 'w'
     
-    p1Colour = red
     foodColour = green
     wallColour = blue
 

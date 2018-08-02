@@ -26,7 +26,8 @@ class StandardGameScene(GameScene):
         if not self.stopped:
             self.move()
             self.eatFood()
-            if self.checkIfCrashed():
+            self.checkIfCrashed()
+            if self.checkIfGameOver():
                 self.stop()
 
     def on_reset(self):
@@ -34,18 +35,24 @@ class StandardGameScene(GameScene):
 
     def stop(self):
         self.stopped = True
-        for player in self.players:
-            print('Game Over! You scored',len(player.body))
+        for snek in self.sneks:
+            print('Game Over! You scored',len(snek.body))
 
     def checkIfCrashed(self):
-        for player in self.players:
-            for i,loc in enumerate(player.body):
+        for snek in self.sneks:
+            for i,loc in enumerate(snek.body):
                 if loc in self.walls:
-                    return True
-                for val in range(len(player.body)):
-                    if val != i and player.body[val] == loc:
-                        return True
+                    snek.setDead()
+                for val in range(len(snek.body)):
+                    if val != i and snek.body[val] == loc:
+                        snek.setDead()
         return False
+
+    def checkIfGameOver(self):
+        for snek in self.sneks:
+            if not snek.isDead():
+                return False
+        return True
 
     def createWalls(self):
         for x in range(self.grid.cols):

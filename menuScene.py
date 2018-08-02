@@ -28,7 +28,6 @@ class MenuScene(Scene):
         self.background = pygame.image.load('media/menu.JPG')
 
     def on_startup(self):
-        print('Setting up menu')
         self.textSurface = self.font.render('Snek',True,(0,0,0))
         self.textWidth, self.textHeight = self.font.size('Snek')
 
