@@ -1,7 +1,7 @@
 import pygame
 from random import randint
 
-from settings.settings import Settings as S
+from settings import Settings as S
 
 
 class Director:

@@ -1,7 +1,6 @@
-from scenes.scene import Scene
-from buttons.button import Button
-from buttons.buttonManager import ButtonManager
-from settings.settings import Settings as S
+from scenes import Scene
+from buttons import Button,ButtonManager
+from settings import Settings as S
 
 
 

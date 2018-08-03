@@ -1,7 +1,6 @@
-from basic.snek import Snek
-from basic.grid import Grid
-from scenes.scene import Scene
-from settings.settings import Settings as S
+from basic import Snek,Grid
+from scenes import Scene
+from settings import Settings as S
 
 from random import randint
 import pygame

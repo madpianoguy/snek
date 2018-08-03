@@ -1,5 +1,5 @@
 from basic.player import Player
-from basic.snek import Snek
+from basic import Snek
 import pygame
 
 class Settings:
