@@ -17,7 +17,7 @@ class SnekGame:
         D.add_scene(GS,'game')
         D.add_scene(SGS,'standardGame')
         D.add_scene(MGS,'multiplayerGame')
-        D.change_scene('multiplayerGame')
+        D.change_scene('menu')
         D.run()
         
 #TO-DO

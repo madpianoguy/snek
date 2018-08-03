@@ -1,4 +1,6 @@
 from player import Player
+from snek import Snek
+import pygame
 
 class Settings:
 
@@ -21,16 +23,33 @@ class Settings:
 
     p1Char = 'p1'
     p1Colour = red
+    p1Keys = [
+        pygame.K_UP,
+        pygame.K_LEFT,
+        pygame.K_DOWN,
+        pygame.K_RIGHT
+        ]
 
     p2Char = 'p2'
     p2Colour = white
+    p2Keys = [
+        pygame.K_w,
+        pygame.K_a,
+        pygame.K_s,
+        pygame.K_d
+        ]
 
     p3Char = 'p3'
     p3Colour = yellow
+    p3Keys = [
+        pygame.K_i,
+        pygame.K_j,
+        pygame.K_k,
+        pygame.K_l]
 
-    players = [Player(p1Char,p1Colour),
-               Player(p2Char,p2Colour),
-               Player(p3Char,p3Colour)]
+    sneks = [Snek(p1Char,p1Colour,keys=p1Keys),
+             Snek(p2Char,p2Colour,keys=p2Keys),
+             Snek(p3Char,p3Colour,keys=p3Keys)]
     empty = 'e'
     food = 'f'
     wallChar = 'w'
@@ -41,6 +60,7 @@ class Settings:
     numOfFood = 3
 
     font = 'Comic Sans MS'
+    buttonFontSize = 22
 
 
     

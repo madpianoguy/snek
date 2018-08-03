@@ -33,14 +33,25 @@ class MenuScene(Scene):
 
         self.buttonManager = ButtonManager(self.director,(0,500),height=100)
 
-        self.buttonManager.addButton(S.cyan,'Play - No Rules',
-                                     bind=self.playNoRules)
+        self.buttonManager.addButton(S.cyan,
+                                     'Play - No Rules',
+                                     bind=self.playNoRules,
+                                     fontSize=S.buttonFontSize)
 
-        self.buttonManager.addButton(S.cyan,'Play - Standard Rules',
-                                     bind=self.playRules)
+        self.buttonManager.addButton(S.cyan,
+                                     'Play - Standard Rules',
+                                     bind=self.playRules,
+                                     fontSize=S.buttonFontSize)
 
-        self.buttonManager.addButton(S.cyan,'Reset Games',
-                                     bind=self.resetGames)
+        self.buttonManager.addButton(S.cyan,
+                                     'Play - Multiplayer',
+                                     bind=self.playMultiplayer,
+                                     fontSize=S.buttonFontSize)
+
+        self.buttonManager.addButton(S.cyan,
+                                     'Reset Games',
+                                     bind=self.resetGames,
+                                     fontSize=S.buttonFontSize)
 
     def on_update(self):
         pass
@@ -67,9 +78,13 @@ class MenuScene(Scene):
     def playRules(self):
         self.director.change_scene('standardGame')
 
+    def playMultiplayer(self):
+        self.director.change_scene('multiplayerGame')
+
     def resetGames(self):
         self.director.reset_scene('game')
         self.director.reset_scene('standardGame')
+        self.director.reset_scene('multiplayerGame')
 
     def calculateMiddle(self,widthAndHeight):
         return super().calculateMiddle(widthAndHeight,

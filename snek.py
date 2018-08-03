@@ -32,6 +32,14 @@ class Snek:
                 if self.isValidDirection(self.bindings[x]):
                     self.direction = self.bindings[x]
 
+    def getBody(self,head=False):
+        if head:
+            return self.body
+        return self.body[1:]
+
+    def getHead(self):
+        return self.head
+
     def isValidDirection(self,newDirection):
         return not (self.direction[0] == newDirection[0] or
                 self.direction[1] == newDirection[1])
