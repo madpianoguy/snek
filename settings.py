@@ -59,8 +59,11 @@ class Settings:
 
     numOfFood = 3
 
-    font = 'Comic Sans MS'
+    font = 'Times New Roman'
+    #font = 'Comic Sans MS'
     buttonFontSize = 22
+    standardFontSize = 30
+    scoreFontSize = 100
 
 
     

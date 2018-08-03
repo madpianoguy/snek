@@ -11,6 +11,9 @@ class MultiplayerGameScene(StandardGameScene):
         super().__init__(director)
         self.setSneks([S.sneks[0],S.sneks[1]])
         #self.setSneks(S.sneks)
+
+    def on_reset(self):
+        self.__init__(self.director)
         
 
     def checkIfCrashed(self):

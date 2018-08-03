@@ -44,7 +44,7 @@ class ButtonManager:
         
 
     def addButton(self,colour,text=False,fontColour=(0,0,0),
-                  fontType='Comic Sans MS',fontSize=30,bind=False):
+                  fontType=S.font,fontSize=S.standardFontSize,bind=False):
         self.numOfButtons = len(self.buttons)
         oldButtons = self.buttons
         self.buttons = []

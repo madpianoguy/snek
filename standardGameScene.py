@@ -33,10 +33,19 @@ class StandardGameScene(GameScene):
     def on_reset(self):
         self.__init__(self.director)
 
+    def getScoreString(self):
+        scores = ''
+        for snek in self.sneks:
+            print(snek.char,'scored',len(snek.getBody(True)))
+            scores += snek.char + ' scored ' + str(len(snek.getBody(True))) + '\n'
+        scores = scores[:-1]
+        return scores
+
     def stop(self):
         self.stopped = True
-        for snek in self.sneks:
-            print('Game Over! You scored',len(snek.body))
+        scores = self.getScoreString()
+        #scores = scores[:-2]
+        self.writeText(scores,S.font,S.scoreFontSize,S.white)
 
     def checkIfCrashed(self):
         for snek in self.sneks:
