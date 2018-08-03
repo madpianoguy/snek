@@ -20,8 +20,14 @@ class Snek:
         self.bindings = [(0,-1),(-1,0),(0,1),(1,0)]
         self.isAlive = True
 
+    def reset(self):
+        self.__init__(self.char,self.colour,self.startCoord,self.keys)
+
     def setDead(self):
         self.isAlive = False
+
+    def setAlive(self):
+        self.isAlive = True
 
     def isDead(self):
         return not self.isAlive

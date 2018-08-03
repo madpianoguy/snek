@@ -45,13 +45,17 @@ class GameScene(Scene):
 
     def on_reset(self):
         self.__init__(self.director)
+        self.resetSneks()
+
+    def resetSneks(self):
+        for snek in self.sneks:
+            snek.reset()
 
     def setStartingPositions(self):
         xPos = int(self.grid.rows/3)
         for i,snek in enumerate(self.sneks):
             yPos = int(self.grid.rows/(len(self.sneks)+1))* (i+1)
             snek.setStartCoords((xPos,yPos))
-
     def setSneks(self,sneks):
         self.sneks = sneks
         self.setStartingPositions()

@@ -8,7 +8,8 @@ import pygame
 class ButtonManager:
 
     def __init__(self,director,startCoords,
-                 width=None,height=None,cols=True,full=True):
+                 width=None,height=None,cols=True,full=True,
+                 fontType='Times New Roman',fontSize=30):
 
         
         self.startCoords = startCoords
@@ -19,6 +20,8 @@ class ButtonManager:
 
         self.cols = cols
         self.full = full
+        self.fontType = fontType
+        self.fontSize = fontSize
         
         if width is None:
             self.width = self.director.dWidth
@@ -44,7 +47,12 @@ class ButtonManager:
         
 
     def addButton(self,colour,text=False,fontColour=(0,0,0),
-                  fontType=S.font,fontSize=S.standardFontSize,bind=False):
+                  fontType=False,fontSize=False,bind=False):
+        if not fontType:
+            fontType = self.fontType
+        if not fontSize:
+            fontSize = self.fontSize
+            
         self.numOfButtons = len(self.buttons)
         oldButtons = self.buttons
         self.buttons = []

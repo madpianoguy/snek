@@ -31,25 +31,27 @@ class MenuScene(Scene):
         self.textSurface = self.font.render('Snek',True,(0,0,0))
         self.textWidth, self.textHeight = self.font.size('Snek')
 
-        self.buttonManager = ButtonManager(self.director,(0,500),height=100)
+        self.buttonManager = ButtonManager(self.director,(0,500),height=100,
+                                           fontType=S.font,
+                                           fontSize=S.buttonFontSize)
 
         self.buttonManager.addButton(S.cyan,
-                                     'Play - No Rules',
+                                     'Practice',
                                      bind=self.playNoRules,
                                      fontSize=S.buttonFontSize)
 
         self.buttonManager.addButton(S.cyan,
-                                     'Play - Standard Rules',
+                                     'Singleplayer',
                                      bind=self.playRules,
                                      fontSize=S.buttonFontSize)
 
         self.buttonManager.addButton(S.cyan,
-                                     'Play - Multiplayer',
+                                     'Multiplayer',
                                      bind=self.playMultiplayer,
                                      fontSize=S.buttonFontSize)
 
         self.buttonManager.addButton(S.cyan,
-                                     'Reset Games',
+                                     'Reset',
                                      bind=self.resetGames,
                                      fontSize=S.buttonFontSize)
 

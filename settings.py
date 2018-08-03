@@ -61,7 +61,7 @@ class Settings:
 
     font = 'Times New Roman'
     #font = 'Comic Sans MS'
-    buttonFontSize = 22
+    buttonFontSize = 35
     standardFontSize = 30
     scoreFontSize = 100
 
