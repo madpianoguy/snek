@@ -1,5 +1,5 @@
-from button import Button
-from settings import Settings as S
+from buttons.button import Button
+from settings.settings import Settings as S
 
 import pygame
 

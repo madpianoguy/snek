@@ -1,5 +1,5 @@
-from gameScene import GameScene
-from settings import Settings as S
+from scenes.gameScene import GameScene
+from settings.settings import Settings as S
 
 import pygame
 

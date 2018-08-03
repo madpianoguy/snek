@@ -1,7 +1,7 @@
 import pygame
 from random import randint
 
-from settings import Settings as S
+from settings.settings import Settings as S
 
 
 class Director:
@@ -17,7 +17,7 @@ class Director:
         self.scenes = {}
         self.scene = None
 
-        pygame.mixer.music.load('media/brownEyedGirl.mp3')
+        pygame.mixer.music.load('../media/brownEyedGirl.mp3')
         pygame.mixer.music.play()
 
     def quit(self):

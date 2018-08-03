@@ -1,6 +1,6 @@
-from standardGameScene import StandardGameScene
-from snek import Snek
-from settings import Settings as S
+from scenes.standardGameScene import StandardGameScene
+from basic.snek import Snek
+from settings.settings import Settings as S
 
 import pygame
 

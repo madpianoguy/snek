@@ -1,9 +1,10 @@
-from scene import Scene
-from buttonManager import ButtonManager
-from settings import Settings as S
+from scenes.scene import Scene
+from buttons.button import Button
+from buttons.buttonManager import ButtonManager
+from settings.settings import Settings as S
 
 
-from button import Button
+
 
 import pygame
 
@@ -25,7 +26,7 @@ class MenuScene(Scene):
         self.buttonManager = None
         
 
-        self.background = pygame.image.load('media/menu.JPG')
+        self.background = pygame.image.load('../media/menu.JPG')
 
     def on_startup(self):
         self.textSurface = self.font.render('Snek',True,(0,0,0))

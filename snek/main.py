@@ -1,8 +1,8 @@
-from director import Director
-from gameScene import GameScene
-from menuScene import MenuScene
-from standardGameScene import StandardGameScene
-from multiplayerGameScene import MultiplayerGameScene
+from director.director import Director
+from scenes.gameScene import GameScene
+from scenes.menuScene import MenuScene
+from scenes.standardGameScene import StandardGameScene
+from scenes.multiplayerGameScene import MultiplayerGameScene
 
 
 class SnekGame:
