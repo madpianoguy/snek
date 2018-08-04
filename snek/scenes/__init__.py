@@ -13,4 +13,5 @@ from scenes.menuScene import MenuScene
 from scenes.gameScene import GameScene
 from scenes.standardGameScene import StandardGameScene
 from scenes.multiplayerGameScene import MultiplayerGameScene
+from scenes.scoreScene import ScoreScene
 

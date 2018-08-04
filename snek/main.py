@@ -1,5 +1,6 @@
 from director import Director
-from scenes import GameScene,MenuScene,StandardGameScene,MultiplayerGameScene
+from scenes import GameScene,MenuScene,StandardGameScene
+from scenes import MultiplayerGameScene,ScoreScene
 
 
 class SnekGame:
@@ -10,11 +11,14 @@ class SnekGame:
         MS = MenuScene(D)
         SGS = StandardGameScene(D)
         MGS = MultiplayerGameScene(D)
+        SS = ScoreScene(D)
         D.add_scene(MS,'menu')
         D.add_scene(GS,'game')
         D.add_scene(SGS,'standardGame')
         D.add_scene(MGS,'multiplayerGame')
-        D.change_scene('menu')
+        D.add_scene(SS,'scoreScene')
+        #D.change_scene('menu')
+        D.change_scene('scoreScene')
         D.run()
         
 #TO-DO

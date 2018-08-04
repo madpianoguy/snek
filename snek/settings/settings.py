@@ -65,5 +65,7 @@ class Settings:
     standardFontSize = 30
     scoreFontSize = 100
 
+    media = '../media/'
+
 
     

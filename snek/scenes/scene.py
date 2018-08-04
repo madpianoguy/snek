@@ -6,14 +6,13 @@ class Scene:
         self.director = director
         self.isTextToWrite = False
         self.textSurface = None
-        self.middleText = (0,0)
-        
+        self.middleText = (0,0)    
 
     def on_update(self):
-        raise NotImplementedError
+        pass
 
     def on_event(self,event):
-        raise NotImplementedError
+        pass
 
     def on_draw(self):
         if self.isTextToWrite:
