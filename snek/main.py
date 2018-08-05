@@ -1,6 +1,8 @@
 from director import Director
 from scenes import GameScene,MenuScene,StandardGameScene
-from scenes import MultiplayerGameScene,ScoreScene
+from scenes import MultiplayerGameScene,ScoreScene,GridScene
+from items import Item
+from settings import Settings as S
 
 
 class SnekGame:
@@ -17,8 +19,22 @@ class SnekGame:
         D.add_scene(SGS,'standardGame')
         D.add_scene(MGS,'multiplayerGame')
         D.add_scene(SS,'scoreScene')
+        
+        GrS = GridScene(D,cols=0)
+        D.add_scene(GrS,'gridScene')
+        I1 = Item()
+        I1.setColour(S.red)
+        I2 = Item()
+        I2.setColour(S.yellow)
+        I3 = Item()
+        I3.setColour(S.cyan)
+        GrS.addSection(I1)
+        GrS.addSection(I2)
+        GrS.addSection(I3)
+        D.change_scene('gridScene')
+        
         #D.change_scene('menu')
-        D.change_scene('scoreScene')
+        #D.change_scene('scoreScene')
         D.run()
         
 #TO-DO

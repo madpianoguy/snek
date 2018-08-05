@@ -5,7 +5,8 @@ __all__ = [
     'menuScene',
     'multiplayerGameScene',
     'scene.py',
-    'standardGameScene'
+    'standardGameScene',
+    'gridScene'
     ]
 
 from scenes.scene import Scene
@@ -14,4 +15,5 @@ from scenes.gameScene import GameScene
 from scenes.standardGameScene import StandardGameScene
 from scenes.multiplayerGameScene import MultiplayerGameScene
 from scenes.scoreScene import ScoreScene
+from scenes.gridScene import GridScene
 

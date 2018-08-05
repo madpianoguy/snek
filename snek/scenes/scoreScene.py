@@ -13,7 +13,6 @@ class ScoreScene(Scene):
     def formatScores(self):
         scoreString = ''
         for score in self.scoreManager.getScores():
-            print(score)
             text = '{:10s} {:3d}'.format(score[1],score[0])
             #text = '{:10s} {:3d}'
             #format(text,[score[1],score[0]])
@@ -28,5 +27,4 @@ class ScoreScene(Scene):
 
     def writeScores(self):
         text = self.formatScores()
-        print('Writing:',text)
         self.writeText(text,S.font,S.standardFontSize,S.white)
