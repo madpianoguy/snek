@@ -1,30 +1,36 @@
-from scenes import Scene
+from scenes import Scene#,GridScene
+from scenes.gridScene import GridScene
 from basic import Scores
+from items import Label
 from settings import Settings as S
+
+import pygame
 
 class ScoreScene(Scene):
 
     def __init__(self,director):
         super().__init__(director)
-        self.scoreManager = Scores()
-        self.scoreManager.load(S.media+'snek.scores')
+        self.gridScene = GridScene(director,cols=1)
+        self.scores = Scores()
+        self.scores.load(S.media+'snek.scores')
+
         self.writeScores()
 
-    def formatScores(self):
-        scoreString = ''
-        for score in self.scoreManager.getScores():
-            text = '{:10s} {:3d}'.format(score[1],score[0])
-            #text = '{:10s} {:3d}'
-            #format(text,[score[1],score[0]])
-            #text = score[1] + str(score[0])
-            scoreString += text + ' '
-        #scoreString = scoreString[:-1]
-        return scoreString
-
-    def on_draw(self):
-        self.director.screen.fill(S.black)
-        super().on_draw()
+    def formatScore(self,score):
+        return "{:10s} {:3d}".format(score[1],score[0])
 
     def writeScores(self):
-        text = self.formatScores()
-        self.writeText(text,S.font,S.standardFontSize,S.white)
+        for score in self.scores.getScores():
+            print(self.formatScore(score))
+            l = Label()
+            l.setText(self.formatScore(score))
+            self.gridScene.addItem(l)
+
+    def on_draw(self):
+        self.gridScene.on_draw()
+
+    def on_event(self,event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == 27:
+                self.director.reset_scene('standardGame')
+                self.director.change_scene('menu')

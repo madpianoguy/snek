@@ -27,6 +27,9 @@ class GridScene(Scene):
     def on_draw(self):
         for item in self.sections:
             item.draw()
+
+    def addItem(self,item):
+        self.addSection(item)
         
     def addSection(self,item):
         self.numOfSections += 1

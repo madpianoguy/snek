@@ -45,7 +45,8 @@ class StandardGameScene(GameScene):
         self.stopped = True
         scores = self.getScoreString()
         #scores = scores[:-2]
-        self.writeText(scores,S.font,S.scoreFontSize,S.white)
+        self.director.change_scene('scoreScene')
+        #self.writeText(scores,S.font,S.scoreFontSize,S.white)
 
     def checkIfCrashed(self):
         for snek in self.sneks:
