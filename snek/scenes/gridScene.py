@@ -34,15 +34,15 @@ class GridScene(Scene):
         self.sections = []
         if self.expand:
             self.cols = self.numOfSections
-        print('Adding:',item)
-        print('Sections:',self.numOfSections)
+        #print('Adding:',item)
+        #print('Sections:',self.numOfSections)
         for section in sections:
             size = self.getNextSize()
             coords = self.getNextCoords()
             section.setSize(size)
             section.setPos(coords)
             self.sections.append(section)
-            print(self.sections)
+            #print(self.sections)
         size = self.getNextSize()
         coords = self.getNextCoords()
         #print(coords,size)
@@ -50,7 +50,7 @@ class GridScene(Scene):
         item.setPos(coords)
         item.setScreen(self.director.screen)
         self.sections.append(item)
-        print(self.sections)
+        #print(self.sections)
 
     def getNextSize(self):
         numOfSections = self.numOfSections
