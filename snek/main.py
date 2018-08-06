@@ -1,10 +1,9 @@
 from director import Director
 from scenes import GameScene,MenuScene,StandardGameScene
 from scenes import MultiplayerGameScene,ScoreScene#,GridScene
-from items import Item,Label
+from items import Item,Label,Button
 from settings import Settings as S
 from scenes.gridScene import GridScene
-
 
 class SnekGame:
 
@@ -20,27 +19,33 @@ class SnekGame:
         D.add_scene(SGS,'standardGame')
         D.add_scene(MGS,'multiplayerGame')
         D.add_scene(SS,'scoreScene')
-        
-        #GrS = GridScene(D,cols=1)
-        #D.add_scene(GrS,'gridScene')
-        #I1 = Item()
-        #I1.setColour(S.red)
-        #I2 = Item()
-        #I2.setColour(S.yellow)
-        #I3 = Item()
-        #I3.setColour(S.cyan)
-        #L1 = Label()
-        #L1.setColour(S.purple)
-        #L1.setText('Hello')
 
-        #GrS.addSection(L1)
-        #GrS.addSection(I1)
-        #GrS.addSection(I2)
-        #GrS.addSection(I3)
+        """
+        GrS = GridScene(D,cols=1)
+        D.add_scene(GrS,'gridScene')
+        FB = forButton()
+        I1 = Item()
+        I1.setColour(S.red)
+        I2 = Item()
+        I2.setColour(S.yellow)
+        I3 = Item()
+        I3.setColour(S.cyan)
+        L1 = Label()
+        L1.setColour(S.purple)
+        L1.setText('Hello')
+        B1 = Button()
+        B1.setText("I'm a button!")
+
+        GrS.addSection(L1)
+        GrS.addSection(I1)
+        GrS.addSection(I2)
+        GrS.addSection(I3)
+        GrS.addSection(B1)
+        
+        D.change_scene('gridScene')
+        """
         
         D.change_scene('menu')
-        
-        #D.change_scene('menu')
         #D.change_scene('scoreScene')
         D.run()
         

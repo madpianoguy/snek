@@ -28,6 +28,10 @@ class GridScene(Scene):
         for item in self.sections:
             item.draw()
 
+    def on_event(self,event):
+        for item in self.sections:
+            item.on_event(event)
+
     def addItem(self,item):
         self.addSection(item)
         

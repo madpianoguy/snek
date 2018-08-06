@@ -5,6 +5,7 @@ import pygame
 class Label(Item):
 
     def __init__(self):
+        super().__init__()
         self.text = None
         self.fontType = 'Times New Roman'
         self.fontSize = 30

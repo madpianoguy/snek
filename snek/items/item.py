@@ -18,6 +18,9 @@ class Item:
     def __repr__(self):
         return self.__str__()
 
+    def on_event(self,event):
+        pass
+
     def setPos(self,pos):
         self.xPos,self.yPos = pos
 
@@ -38,14 +41,14 @@ class Item:
 
     def draw(self):
         if self.screen is not None:
-
-            actual = pygame.Rect(self.xPos,
+            if self.actual is None:
+                self.actual = pygame.Rect(self.xPos,
                                       self.yPos,
                                       self.xSize,
                                       self.ySize)
 
             pygame.draw.rect(self.screen,
                              self.colour,
-                             actual)
+                             self.actual)
 
     
