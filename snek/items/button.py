@@ -32,9 +32,14 @@ class Button(Label):
     def getHoverColour(self,colour):
         new = []
         for val in colour:
-            val -= 20
-            if val < 0:
-                val = 0
+            if val > 20:
+                val -= 20
+                if val < 0:
+                    val = 0
+            else:
+                val += 20
+                if val > 255:
+                    val = 255
             new.append(val)
         return (new[0],new[1],new[2])
 

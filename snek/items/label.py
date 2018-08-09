@@ -6,7 +6,7 @@ class Label(Item):
 
     def __init__(self):
         super().__init__()
-        self.text = None
+        self.text =''
         self.fontType = 'Times New Roman'
         self.fontSize = 30
         self.fontColour = (255,255,255)
@@ -18,6 +18,22 @@ class Label(Item):
         self.textYPos = None
         self.isText = False
         self.colour = (0,0,0)
+
+    def setTextColour(self,colour):
+        self.fontColour = colour
+
+    def autoSetTextColour(self):
+        col = []
+        for x in range(3):
+            val = self.colour[x]
+            diff = val - 127
+            if diff > 0:
+                val = 0
+            else:
+                val = 255
+            col.append(val)
+        self.fontColour = (col[0],col[1],col[2])
+                
 
     def setText(self,text):
         self.text = text
