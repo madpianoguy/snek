@@ -20,7 +20,7 @@ class SnekGame:
         D.add_scene(MGS,'multiplayerGame')
         D.add_scene(SS,'scoreScene')
 
-
+        """
         GrS = GridScene(D,cols=1)
         D.add_scene(GrS,'gridScene')
         I1 = Item()
@@ -46,10 +46,10 @@ class SnekGame:
         GrS.addSection(T2)
         
         D.change_scene('gridScene')
-
+        """
         
         #D.change_scene('menu')
-        #D.change_scene('scoreScene')
+        D.change_scene('scoreScene')
         D.run()
         
 #TO-DO

@@ -34,6 +34,20 @@ class GridScene(Scene):
 
     def addItem(self,item):
         self.addSection(item)
+        self.refreshLayout()
+
+    def refreshLayout(self):
+        sections = self.sections
+        self.sections = []
+        for section in sections:
+            size = self.getNextSize()
+            coords = self.getNextCoords()
+            section.setSize(size)
+            section.setPos(coords)
+            self.sections.append(section)
+
+    def insertItem(self,item,index):
+        print("Insert Item method not implemented")
         
     def addSection(self,item):
         self.numOfSections += 1

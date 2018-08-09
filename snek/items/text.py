@@ -13,7 +13,8 @@ class Text(Button):
         self.active = False
         
     def on_event(self,event):
-        self.do_hover()
+        #self.do_hover()
+        self.do_active()
         if event.type == pygame.KEYDOWN and self.active:
             self.handleKeys(event)
         elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -21,6 +22,12 @@ class Text(Button):
                 self.active = True
             else:
                 self.active = False
+
+    def do_active(self):
+        if self.active:
+            self.colour = self.hoverColour
+        else:
+            self.colour = self.originalColour
 
     def handleKeys(self,event):
         if event.key == pygame.K_RETURN:
