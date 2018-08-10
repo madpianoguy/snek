@@ -36,6 +36,24 @@ class GridScene(Scene):
         self.addSection(item)
         self.refreshLayout()
 
+    def insertItem(self,item,index):
+        self.numOfSections += 1
+        if index > len(self.sections):
+            return
+        if index < 0:
+            index = len(self.sections) + index
+        self.sections.insert(index,item)
+     
+    def removeItem(self,index):
+        if index > len(self.sections):
+            return
+        if index < 0:
+            index = len(self.sections) + index
+            if index <= 0:
+                return False
+        self.sections.pop(index)
+        return True
+
     def refreshLayout(self):
         sections = self.sections
         self.sections = []
@@ -44,11 +62,9 @@ class GridScene(Scene):
             coords = self.getNextCoords()
             section.setSize(size)
             section.setPos(coords)
+            section.setScreen(self.director.screen)
             self.sections.append(section)
-
-    def insertItem(self,item,index):
-        print("Insert Item method not implemented")
-        
+   
     def addSection(self,item):
         self.numOfSections += 1
         sections = self.sections

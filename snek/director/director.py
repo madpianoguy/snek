@@ -52,5 +52,9 @@ class Director:
     def reset_scene(self,scene_key):
         self.scenes[scene_key].on_reset()
 
+    def get_scene(self,scene_key):
+        if scene_key in self.scenes:
+            return self.scenes[scene_key]
+
 
         

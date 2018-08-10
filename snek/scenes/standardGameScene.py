@@ -45,6 +45,8 @@ class StandardGameScene(GameScene):
         self.stopped = True
         scores = self.getScoreString()
         #scores = scores[:-2]
+        scoreScene = self.director.get_scene('scoreScene')
+        scoreScene.setScore(len(self.sneks[0].getBody(True)))
         self.director.change_scene('scoreScene')
         #self.writeText(scores,S.font,S.scoreFontSize,S.white)
 
